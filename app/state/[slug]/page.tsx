@@ -35,7 +35,7 @@ export default async function StatePage({
       </h1>
 
       <div className="mt-6 space-y-3">
-        {stations.map((station) => (
+        {stations.map((station: { id: string; slug: string; name: string }) => (
           <Link
             key={station.id}
             href={`/station/${station.slug}`}
