@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-
+import StationCard from "@/components/StationCard";
 interface PageProps {
   params: Promise<{
     slug: string;
@@ -34,17 +34,18 @@ export default async function StatePage({
         {stateName} Railway Stations
       </h1>
 
-      <div className="mt-6 space-y-3">
-        {stations.map((station: { id: number; slug: string; name: string }) => (
-          <Link
-            key={station.id}
-            href={`/station/${station.slug}`}
-            className="block underline"
-          >
-            {station.name}
-          </Link>
-        ))}
-      </div>
+      <div className="mt-6 grid gap-4 md:grid-cols-2">
+
+  {stations.map((station) => (
+    <StationCard
+      key={station.id}
+      name={station.name}
+      slug={station.slug}
+      state={station.state}
+    />
+  ))}
+
+</div>
     </main>
   );
 }

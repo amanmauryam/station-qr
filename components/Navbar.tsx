@@ -1,38 +1,41 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
-    <nav className="border-b bg-white">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+    <header className="border-b">
 
-        {/* Logo + Brand */}
+      <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
         <Link
           href="/"
-          className="flex items-center gap-3"
+          className="flex items-center gap-2"
         >
           <Image
             src="/logo.svg"
             alt="Station QR"
-            width={48}
-            height={48}
-            className="h-12 w-auto"
-            priority
+            width={40}
+            height={40}
+            className="w-auto h-10"
           />
 
-          <span className="text-lg sm:text-xl font-bold tracking-tight">
+          <span className="font-bold text-xl">
             Station QR
           </span>
         </Link>
 
-        {/* Navigation */}
-        <div className="flex items-center gap-4 sm:gap-6 text-sm sm:text-base">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
+        <div className="flex gap-5 text-sm">
+          <Link href="/states">
+            States
+          </Link>
+
+          <Link href="/popular">
+            Popular
+          </Link>
         </div>
 
-      </div>
-    </nav>
+      </nav>
+
+    </header>
   );
 }
